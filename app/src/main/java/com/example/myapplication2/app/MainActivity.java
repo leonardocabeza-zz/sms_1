@@ -2,10 +2,7 @@ package com.example.myapplication2.app;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -14,7 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity {
@@ -24,52 +22,28 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button botonEnviarSms = (Button) findViewById(R.id.button);
-        final EditText nro = (EditText) findViewById(R.id.editText2);
-        final EditText msj = (EditText) findViewById(R.id.editText);
+        Button sendSmsButton = (Button) findViewById(R.id.button);
+        final EditText number = (EditText) findViewById(R.id.editText2);
+        final EditText msg = (EditText) findViewById(R.id.editText);
 
-        botonEnviarSms.setOnClickListener(new View.OnClickListener() {
+        sendSmsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendingIntent estadoMsj = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent("SMS_SENT"), 0);
+                PendingIntent msgSent = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent("SMS_SENT"), PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent msgDelivered = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent("SMS_DELIVERED"), 0);
                 SmsManager smsManager = SmsManager.getDefault();
-                //test1
-
-                registerReceiver(new BroadcastReceiver(){
-                    @Override
-                    public void onReceive(Context arg0, Intent arg1) {
-                        switch (getResultCode())
-                        {
-                            case Activity.RESULT_OK:
-                                Toast.makeText(MainActivity.this, "Mensaje Enviado",
-                                        Toast.LENGTH_SHORT).show();
-                                break;
-                            case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-                                Toast.makeText(MainActivity.this, "Falla genérica",
-                                        Toast.LENGTH_SHORT).show();
-                                break;
-                            case SmsManager.RESULT_ERROR_NO_SERVICE:
-                                Toast.makeText(MainActivity.this, "Sin servicio",
-                                        Toast.LENGTH_SHORT).show();
-                                break;
-                            case SmsManager.RESULT_ERROR_NULL_PDU:
-                                Toast.makeText(MainActivity.this, "PDU Nulo",
-                                        Toast.LENGTH_SHORT).show();
-                                break;
-                            case SmsManager.RESULT_ERROR_RADIO_OFF:
-                                Toast.makeText(getBaseContext(), "Radio apagada",
-                                        Toast.LENGTH_SHORT).show();
-                                break;
-                        }
-                    }
-                }, new IntentFilter("SMS_SENT"));
 
                 try {
-                    if (nro.length() > 0 && msj.length() > 0) {
-                        smsManager.sendTextMessage(nro.getText().toString(),null,msj.getText().toString(),estadoMsj,null);
+                    if (number.length() > 0 && msg.length() > 0) {
+                        if (msg.length() > 160) {
+                            ArrayList<String> messageList = smsManager.divideMessage(msg.getText().toString());
+                            smsManager.sendMultipartTextMessage(number.getText().toString(), null, messageList, null, null);
+                        } else {
+                            smsManager.sendTextMessage(number.getText().toString(), null, msg.getText().toString(), msgSent, msgDelivered);
+                        }
                     }
                 } catch (Exception e) {
-                    Log.d(MainActivity.class.getSimpleName(), "Error al enviar mensaje: " + e.getMessage());
+                    Log.d(MainActivity.class.getSimpleName(), "Error sending SMS: " + e.getMessage());
                 }
             }
         });
@@ -90,10 +64,7 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
 }

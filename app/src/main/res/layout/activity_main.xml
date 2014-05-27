@@ -15,7 +15,7 @@
         android:layout_marginBottom="119dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/enviar_msj" />
+        android:text="@string/send_sms" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:hint="@string/pista_msj"
+        android:hint="@string/hint_msj"
         android:height="30dp" />
 
     <EditText
@@ -38,5 +38,5 @@
         android:layout_marginBottom="47dp"
         android:layout_alignParentEnd="true"
         android:phoneNumber="false"
-        android:hint="@string/pista_nro" />
+        android:hint="@string/hint_no" />
 </RelativeLayout>

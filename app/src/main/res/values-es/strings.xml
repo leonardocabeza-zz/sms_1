@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Envío de SMS Básico</string>
+    <string name="action_settings">Configuración</string>
+    <string name="send_sms">Enviar mensaje</string>
+    <string name="hint_msj">Texto a enviar</string>
+    <string name="hint_no">Ingresar número de teléfono</string>
+    <string name="sent_sms">Mensaje enviado</string>
+    <string name="delivered_sms">Mensaje entregado</string>
+    <string name="generic_failure">Falla genérica</string>
+    <string name="no_service">Sin servicio</string>
+    <string name="null_pdu">PDU Nulo</string>
+    <string name="radio_off">Radio apagada</string>
+    <string name="not_delivered_sms">El mensaje no pudo ser entregado</string>
+
+</resources>
