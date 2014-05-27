@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Application 2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="enviar_msj">Enviar mensaje</string>
+    <string name="pista_msj">Texto a enviar</string>
+    <string name="pista_nro">Ingresar número de teléfono</string>
+
+</resources>
