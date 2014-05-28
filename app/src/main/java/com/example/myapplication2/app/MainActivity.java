@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 
         Button sendSmsButton = (Button) findViewById(R.id.button);
         final EditText number = (EditText) findViewById(R.id.editText2);
-        final EditText msg = (EditText) findViewById(R.id.editText);
+        final EditText msg = (EditText) findViewById(R.id.editText3);
 
         sendSmsButton.setOnClickListener(new View.OnClickListener() {
             @Override
