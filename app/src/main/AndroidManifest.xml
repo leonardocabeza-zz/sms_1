@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication2.app" >
+    package="com.example.myapplication2.app"
+    android:versionCode="1"
+    android:versionName="0.1" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19"
+        android:maxSdkVersion="19"
+    />
 
     <application
         android:allowBackup="true"
