@@ -13,5 +13,6 @@
     <string name="null_pdu">Null PDU</string>
     <string name="radio_off">Radio off</string>
     <string name="not_delivered_sms">Message could not be delivered</string>
+    <string name="sent_and_received">Message sent and delivered</string>
 
 </resources>
