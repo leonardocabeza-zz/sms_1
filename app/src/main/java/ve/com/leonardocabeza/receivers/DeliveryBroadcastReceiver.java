@@ -1,4 +1,4 @@
-package receivers;
+package ve.com.leonardocabeza.receivers;
 
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -9,8 +9,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
-import com.example.myapplication2.app.MainActivity;
-import com.example.myapplication2.app.R;
+import ve.com.leonardocabeza.R;
+import ve.com.leonardocabeza.activities.MainActivity;
 
 /**
  * Created by leonardo.cabeza on 27/05/2014.
@@ -43,13 +43,13 @@ public class DeliveryBroadcastReceiver extends BroadcastReceiver {
             stackBuilder.addParentStack(MainActivity.class);
             stackBuilder.addNextIntent(activityIntent);
             PendingIntent activityPendingIntent =
-                    stackBuilder.getPendingIntent(
-                            0,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
+                stackBuilder.getPendingIntent(
+                    0,
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                );
             mBuilder.setContentIntent(activityPendingIntent);
             NotificationManager mNotificationManager =
-                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(0, mBuilder.build());
         }
     }

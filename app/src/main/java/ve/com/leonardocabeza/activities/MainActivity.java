@@ -1,4 +1,4 @@
-package com.example.myapplication2.app;
+package ve.com.leonardocabeza.activities;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+
+import ve.com.leonardocabeza.R;
 
 
 public class MainActivity extends Activity {
@@ -66,5 +68,4 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		return id == R.id.action_settings || super.onOptionsItemSelected(item);
 	}
-
 }

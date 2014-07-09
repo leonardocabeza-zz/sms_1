@@ -1,4 +1,4 @@
-package receivers;
+package ve.com.leonardocabeza.receivers;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
-import com.example.myapplication2.app.R;
+import ve.com.leonardocabeza.R;
 
 /**
  * Created by leonardo.cabeza on 27/05/2014.
