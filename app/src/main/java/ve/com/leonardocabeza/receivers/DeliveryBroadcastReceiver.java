@@ -24,8 +24,8 @@ public class DeliveryBroadcastReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(ACTION_SMS_DELIVERED)) {
             CharSequence notification_title = "";
             NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(context)
-                    .setAutoCancel(true);
+                    new NotificationCompat.Builder(context)
+                            .setAutoCancel(true);
 
             switch (getResultCode()) {
                 case Activity.RESULT_OK:
@@ -43,13 +43,13 @@ public class DeliveryBroadcastReceiver extends BroadcastReceiver {
             stackBuilder.addParentStack(MainActivity.class);
             stackBuilder.addNextIntent(activityIntent);
             PendingIntent activityPendingIntent =
-                stackBuilder.getPendingIntent(
-                    0,
-                    PendingIntent.FLAG_UPDATE_CURRENT
-                );
+                    stackBuilder.getPendingIntent(
+                            0,
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                    );
             mBuilder.setContentIntent(activityPendingIntent);
             NotificationManager mNotificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(0, mBuilder.build());
         }
     }
